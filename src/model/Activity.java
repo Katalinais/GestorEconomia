@@ -12,4 +12,8 @@ public class Activity {
         this.category = category;
         this.date = date;
     }
+
+    public int getAmount() {
+        return amount;
+    }
 }
