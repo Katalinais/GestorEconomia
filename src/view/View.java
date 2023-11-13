@@ -29,26 +29,11 @@ public class View extends JFrame {
         add(detailsPanel, gbc);
 
 
-        /*searchPanel = new SearchPanel();
-        gbc.weighty = 0.0;
-        gbc.gridy = 1;
-        contentPanel.add(searchPanel, gbc);
-
-        navPanel = new NavPanel();
-        gbc.weighty = 0.0;
-        gbc.gridy = 2;
-        contentPanel.add(navPanel, gbc);
-
-        carruselPanel = new CarruselPanel();
-        gbc.weighty = 0.0;
-        gbc.gridy = 3;
-        contentPanel.add(carruselPanel, gbc);
-
+        /*
         productsPanel = new ProductsPanel();
         gbc.weighty = 0.0;
         gbc.gridy = 4;
         contentPanel.add(productsPanel, gbc);
-
          */
     }
 }
