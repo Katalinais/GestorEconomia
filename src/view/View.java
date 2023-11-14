@@ -4,12 +4,12 @@ import javax.swing.*;
 import java.awt.*;
 
 public class View extends JFrame {
-
     private DetailsPanel detailsPanel;
+    private Footer footer;
 
     public View(){
         super("Gestor Ingresos-Egresos");
-        setSize(1000, 820);
+        setSize(540, 620);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         initComponents();
@@ -29,11 +29,10 @@ public class View extends JFrame {
         add(detailsPanel, gbc);
 
 
-        /*
-        productsPanel = new ProductsPanel();
+
+        footer = new Footer();
         gbc.weighty = 0.0;
         gbc.gridy = 4;
-        contentPanel.add(productsPanel, gbc);
-         */
+        add(footer, gbc);
     }
 }

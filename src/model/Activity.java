@@ -1,5 +1,6 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 public class Activity {
@@ -7,10 +8,14 @@ public class Activity {
     private String category;
     private Date date;
 
-    public Activity(int amount, String category, Date date){
-        this.amount = amount;
-        this.category = category;
-        this.date = date;
+    public Activity(int amount, String category, Date date, ArrayList<String> validCategories) {
+        if (validCategories.contains(category)) {
+            this.amount = amount;
+            this.category = category;
+            this.date = date;
+        } else {
+            throw new IllegalArgumentException("Invalid category");
+        }
     }
 
     public int getAmount() {

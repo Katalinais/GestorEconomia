@@ -18,4 +18,20 @@ public class RegisterActivities {
         }
         return totalAmount;
     }
+
+    public void setActivities(ArrayList<Activity> activities) {
+        this.activities = activities;
+    }
+
+    public void setCategories(ArrayList<String> categories) {
+        this.categories = categories;
+    }
+
+    public ArrayList<Activity> getActivities() {
+        return activities;
+    }
+
+    public ArrayList<String> getCategories() {
+        return categories;
+    }
 }

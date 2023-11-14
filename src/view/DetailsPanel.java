@@ -14,6 +14,7 @@ public class DetailsPanel extends JPanel {
     private JButton dateButton;
     private JLabel balance;
     private JLabel balanceTxt;
+    private JButton join;
 
     public DetailsPanel(){
         setBackground(new Color(255,120,35));
@@ -53,6 +54,9 @@ public class DetailsPanel extends JPanel {
         balanceTxt = new JLabel();
         balanceTxt.setFont(new Font(Font.SERIF, Font.PLAIN, 18));
         balanceTxt.setText("40000");
+
+        join = new JButton();
+        join.setText("Ingresar");
     }
 
     public void addComponents() {
@@ -75,6 +79,7 @@ public class DetailsPanel extends JPanel {
                                                 .addComponent(dateText, GroupLayout.PREFERRED_SIZE,GroupLayout.PREFERRED_SIZE, GroupLayout.PREFERRED_SIZE)
                                                 .addComponent(dateButton, GroupLayout.PREFERRED_SIZE,GroupLayout.PREFERRED_SIZE, GroupLayout.PREFERRED_SIZE)
                                         )
+                                        .addComponent(join)
                                         .addComponent(balanceTxt)
                                 ))
         );
@@ -87,7 +92,7 @@ public class DetailsPanel extends JPanel {
                                 .addComponent(category)
                                 .addGap(5)
                                 .addComponent(date)
-                                .addGap(10)
+                                .addGap(43)
                                 .addComponent(balance)
                         )
                         .addGroup(layout.createSequentialGroup()
@@ -100,7 +105,9 @@ public class DetailsPanel extends JPanel {
                                         .addComponent(dateText, GroupLayout.PREFERRED_SIZE,GroupLayout.PREFERRED_SIZE, GroupLayout.PREFERRED_SIZE)
                                         .addComponent(dateButton, GroupLayout.PREFERRED_SIZE, GroupLayout.PREFERRED_SIZE,GroupLayout.PREFERRED_SIZE)
                                 )
-                                .addGap(12)
+                                .addGap(10)
+                                .addComponent(join)
+                                .addGap(10)
                                 .addComponent(balanceTxt)
                         )
         );
