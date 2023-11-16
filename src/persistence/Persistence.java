@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class Persistence {
-    public static ArrayList<Activity> loadActivitiesXml(String fileName, ArrayList<String> categories) {
+    public static ArrayList<Activity> loadActivitiesXml(String fileName) {
         ArrayList<Activity> activities = new ArrayList<>();
 
         try {
@@ -25,19 +25,19 @@ public class Persistence {
             DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
             Document document = docBuilder.parse(new File(fileName));
 
-            NodeList activityNodes = document.getElementsByTagName("Activity");
+            NodeList activityNodes = document.getElementsByTagName("activity");
 
             for (int i = 0; i < activityNodes.getLength(); i++) {
                 Node activityNode = activityNodes.item(i);
 
                 if (activityNode.getNodeType() == Node.ELEMENT_NODE) {
                     Element activityElement = (Element) activityNode;
-                    int amount = Integer.parseInt(activityElement.getElementsByTagName("Amount").item(0).getTextContent());
-                    String category = activityElement.getElementsByTagName("Category").item(0).getTextContent();
-                    String dateString = activityElement.getElementsByTagName("Date").item(0).getTextContent();
+                    int amount = Integer.parseInt(activityElement.getElementsByTagName("amount").item(0).getTextContent());
+                    String category = activityElement.getElementsByTagName("category").item(0).getTextContent();
+                    String dateString = activityElement.getElementsByTagName("date").item(0).getTextContent();
                     Date date = new SimpleDateFormat("yyyy-MM-dd").parse(dateString);
 
-                    Activity activity = new Activity(amount, category, date,categories);
+                    Activity activity = new Activity(amount, category, date);
                     activities.add(activity);
                 }
             }
@@ -55,7 +55,7 @@ public class Persistence {
             DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
             Document document = docBuilder.parse(new File(fileName));
 
-            NodeList categoryNodes = document.getElementsByTagName("Category");
+            NodeList categoryNodes = document.getElementsByTagName("category");
 
             for (int i = 0; i < categoryNodes.getLength(); i++) {
                 Node categoryNode = categoryNodes.item(i);

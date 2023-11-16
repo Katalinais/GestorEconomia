@@ -14,7 +14,7 @@ public class RegisterActivities {
     public int totalAmount(){
         int totalAmount = 0;
         for (Activity activity: activities){
-            totalAmount =+ activity.getAmount();
+            totalAmount += activity.getAmount();
         }
         return totalAmount;
     }
