@@ -8,6 +8,18 @@
       "amount" : 500,
       "category" : "Transporte",
       "date" : "2023-11-10"
-    }]
+    }, {
+      "amount" : 1000,
+      "category" : "Comida",
+      "date" : "2023-11-15"
+    }, {
+      "amount" : 50000000,
+      "category" : "Comida",
+      "date" : "2023-11-17"
+    }, {
+      "amount" : 30001000,
+      "category" : "Comida",
+      "date" : "2023-11-17"
+    } ]
   }
 }

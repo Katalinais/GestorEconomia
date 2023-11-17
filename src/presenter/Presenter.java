@@ -26,6 +26,7 @@ public class Presenter implements ActionListener {
         switch (source) {
             case "enterActivity":
                 view.showAddActivityPanel();
+                balance();
                 break;
             case "depositsAdd":
                 view.setCategoriesToAdd(management.getDeposits().getCategories());
@@ -47,6 +48,7 @@ public class Presenter implements ActionListener {
                 break;
             case "addActivity":
                 addActivity(view.menuSelectToAdd());
+                balance();
                 break;
             case "searchByDate":
                 searchByDate(view.menuSelectToSearchByDate());
@@ -59,6 +61,9 @@ public class Presenter implements ActionListener {
                 break;
             case "searchByCategory":
                 searchByCategory(view.menuSelectToSearchByCategory());
+                break;
+            case "addNewCategory":
+                addCategory(view.menuAddCategory());
                 break;
             default:
                 System.exit(0);
@@ -139,6 +144,32 @@ public class Presenter implements ActionListener {
         view.showInformationTableByCategory(activities);
     }
 
+    public void addCategory(String menu){
+        switch (menu){
+            case "deposits":
+                addDepositCategory();
+                break;
+            case "expenditures":
+                addExpenditureCategory();
+                break;
+        }
+    }
+
+    public void addDepositCategory(){
+        String category = view.categoryToAdd();
+        management.addDepositCategory(category);
+        Persistence.addCategory(category, "data/categoriesDeposits.json");
+    }
+    public void addExpenditureCategory(){
+        String category = view.categoryToAdd();
+        management.addExpenditureCategory(category);
+        Persistence.addCategory(category, "data/categoriesExpenditures.json");
+    }
+
+    public void balance(){
+        String balance = String.valueOf(management.availableBalance());
+        view.setAmount(balance);
+    }
 
     public static void main(String[] args) {
         Presenter presenter = new Presenter();

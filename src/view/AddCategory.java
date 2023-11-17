@@ -1,6 +1,7 @@
 package view;
 
 import java.awt.*;
+import java.awt.event.ActionListener;
 import javax.swing.*;
 
 public class AddCategory extends JDialog {
@@ -12,11 +13,11 @@ public class AddCategory extends JDialog {
     private JLabel nameLabel;
     private JTextField nameTextField;
 
-    public AddCategory() {
-        initComponents();
+    public AddCategory(ActionListener listener) {
+        initComponents(listener);
     }
 
-    private void initComponents() {
+    private void initComponents(ActionListener listener) {
 
         addCategoryLabel = new JLabel();
         nameLabel = new JLabel();
@@ -73,6 +74,8 @@ public class AddCategory extends JDialog {
         addButton.setBackground(new Color(252, 240, 122));
         addButton.setFont(new Font("Segoe UI", 1, 14));
         addButton.setText("Añadir");
+        addButton.setActionCommand("addNewCategory");
+        addButton.addActionListener(listener);
         gbc.gridx = 0;
         gbc.gridy = 3;
         gbc.gridwidth = 2;

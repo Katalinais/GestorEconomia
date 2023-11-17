@@ -116,6 +116,7 @@ public class AddActivity extends JDialog {
         add(dateLabel, gbc);
 
         calendar.setFont((new Font("Segoe UI", 3, 18)));
+        calendar.setPreferredSize(new Dimension(130,30));
         gbc.gridx = 1;
         gbc.gridy = 4;
         gbc.gridwidth = 1;
@@ -173,6 +174,10 @@ public class AddActivity extends JDialog {
 
     public JDateChooser getCalendar() {
         return calendar;
+    }
+
+    public JLabel getMoneyLabel() {
+        return moneyLabel;
     }
 }
 

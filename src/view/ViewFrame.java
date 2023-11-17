@@ -6,14 +6,13 @@ import model.Activity;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
-import java.awt.Dimension;
+import java.awt.*;
 import java.awt.event.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 
 public class ViewFrame extends JFrame {
-
     private Graphic graphic;
     private AddActivity addActivity;
     private SearchByDate searchByDate;
@@ -34,6 +33,8 @@ public class ViewFrame extends JFrame {
     }
 
     public void initComponents(ActionListener listener) {
+        Image icon = new ImageIcon("img/Logo.png").getImage();
+        this.setIconImage(icon);
         viewPanel = new MainMenu(listener);
         viewPanel.setPreferredSize(new Dimension(400, 500));
         this.setContentPane(viewPanel);
@@ -68,7 +69,7 @@ public class ViewFrame extends JFrame {
     }
 
     public void showAddCategoryPanel() {
-        addCategory = new AddCategory();
+        addCategory = new AddCategory(listener);
         addCategory.setVisible(true);
         addCategory.setLocation(430, 130);
         addCategory.setSize(350, 250);
@@ -108,55 +109,44 @@ public class ViewFrame extends JFrame {
         DefaultTableModel model = (DefaultTableModel) table.getModel();
         int rowCount = model.getRowCount();
         int columnCount = model.getColumnCount();
-        boolean isEmpty = false;
 
-        for (Activity activity : activities) {
-            for (int i = 0; i < rowCount; i++) {
-                boolean emptyRow = true;
-                for (int j = 0; j < columnCount; j++) {
-                    if (model.getValueAt(i, j) != null && !model.getValueAt(i, j).toString().isEmpty()) {
-                        emptyRow = false;
-                        break;
-                    }
-                }
-                if (emptyRow) {
-                    isEmpty = true;
-                    model.setValueAt(activity.getCategory(), i, 0);
-                    model.setValueAt(activity.getAmount(), i, 1);
-                    break;
-                }
-            }
-            if (isEmpty) {
-                break;
+        int requiredRows = activities.size();
+        int existingRows = rowCount;
+
+        if (existingRows < requiredRows) {
+            int rowsToAdd = requiredRows - existingRows;
+            for (int i = 0; i < rowsToAdd; i++) {
+                model.addRow(new Object[columnCount]);
             }
         }
+
+        for (int i = 0; i < requiredRows; i++) {
+            Activity activity = activities.get(i);
+            model.setValueAt(activity.getCategory(), i, 0);
+            model.setValueAt(activity.getAmount(), i, 1);
+        }
     }
+
     public void showInformationTableByCategory(ArrayList<Activity> activities) {
         JTable table = searchByCategory.getInformationTable();
         DefaultTableModel model = (DefaultTableModel) table.getModel();
         int rowCount = model.getRowCount();
         int columnCount = model.getColumnCount();
-        boolean isEmpty = false;
 
-        for (Activity activity : activities) {
-            for (int i = 0; i < rowCount; i++) {
-                boolean emptyRow = true;
-                for (int j = 0; j < columnCount; j++) {
-                    if (model.getValueAt(i, j) != null && !model.getValueAt(i, j).toString().isEmpty()) {
-                        emptyRow = false;
-                        break;
-                    }
-                }
-                if (emptyRow) {
-                    isEmpty = true;
-                    model.setValueAt(activity.getDate(), i, 0);
-                    model.setValueAt(activity.getAmount(), i, 1);
-                    break;
-                }
+        int requiredRows = activities.size();
+        int existingRows = rowCount;
+
+        if (existingRows < requiredRows) {
+            int rowsToAdd = requiredRows - existingRows;
+            for (int i = 0; i < rowsToAdd; i++) {
+                model.addRow(new Object[columnCount]);
             }
-            if (isEmpty) {
-                break;
-            }
+        }
+
+        for (int i = 0; i < requiredRows; i++) {
+            Activity activity = activities.get(i);
+            model.setValueAt(activity.getDate(), i, 0);
+            model.setValueAt(activity.getAmount(), i, 1);
         }
     }
 
@@ -209,4 +199,11 @@ public class ViewFrame extends JFrame {
         return menu;
     }
 
+    public String categoryToAdd(){
+        return addCategory.getNameTextField().getText();
+    }
+
+    public void setAmount(String text){
+        addActivity.getMoneyLabel().setText(text);
+    }
 }

@@ -8,6 +8,10 @@
       "amount" : 500,
       "category" : "Personal",
       "date" : "2023-09-13"
+    }, {
+      "amount" : 2000,
+      "category" : "Comida",
+      "date" : "2023-11-17"
     } ]
   }
 }
