@@ -1,16 +1,13 @@
 {
-  "registerActivities": {
-    "activities": [
-      {
-        "amount": 100,
-        "category": "Comida",
-        "date": "2023-11-13"
-      },
-      {
-        "amount": 500,
-        "category": "Personal",
-        "date": "2023-09-13"
-      }
-    ]
+  "registerActivities" : {
+    "activities" : [ {
+      "amount" : 100,
+      "category" : "Comida",
+      "date" : "2023-11-13"
+    }, {
+      "amount" : 500,
+      "category" : "Personal",
+      "date" : "2023-09-13"
+    } ]
   }
 }

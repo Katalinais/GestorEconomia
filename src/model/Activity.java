@@ -18,4 +18,12 @@ public class Activity {
     public int getAmount() {
         return amount;
     }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public LocalDate getDate() {
+        return date;
+    }
 }

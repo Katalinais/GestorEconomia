@@ -3,6 +3,7 @@ package view;
 import com.toedter.calendar.JDateChooser;
 
 import java.awt.*;
+import java.awt.event.ActionListener;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
@@ -17,11 +18,11 @@ public class SearchByDate extends JDialog {
     private JScrollPane jScrollPane1;
     private JTable informationTable;
 
-    public SearchByDate() {
-        initComponents();
+    public SearchByDate(ActionListener listener) {
+        initComponents(listener);
     }
 
-    private void initComponents() {
+    private void initComponents(ActionListener listener) {
 
         searchByCategoryLabel = new JLabel();
         categoryLabel = new JLabel();
@@ -80,6 +81,8 @@ public class SearchByDate extends JDialog {
         searchButton.setBackground(new Color(252, 240, 122));
         searchButton.setFont(new Font("Segoe UI", 1, 14));
         searchButton.setText("Buscar");
+        searchButton.setActionCommand("searchByDate");
+        searchButton.addActionListener(listener);
         gbc.gridx = 2;
         gbc.gridy = 2;
         gbc.gridwidth = 1;
@@ -88,6 +91,18 @@ public class SearchByDate extends JDialog {
 
         informationTable.setModel(new DefaultTableModel(
                 new Object[][] {
+                        { null, null },
+                        { null, null },
+                        { null, null },
+                        { null, null },
+                        { null, null },
+                        { null, null },
+                        { null, null },
+                        { null, null },
+                        { null, null },
+                        { null, null },
+                        { null, null },
+                        { null, null },
                         { null, null },
                         { null, null },
                         { null, null },

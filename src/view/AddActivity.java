@@ -1,6 +1,10 @@
 package view;
 
+import com.toedter.calendar.JDateChooser;
+
 import java.awt.*;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import javax.swing.*;
 
 public class AddActivity extends JDialog {
@@ -15,13 +19,13 @@ public class AddActivity extends JDialog {
     private JLabel amountLabel;
     private JLabel addActivityLabel;
     private JTextField amountTextField;
-    private JTextField calendar;
+    private JDateChooser calendar;
 
-    public AddActivity() {
-        initComponents();
+    public AddActivity(ActionListener listener) {
+        initComponents(listener);
     }
 
-    private void initComponents() {
+    private void initComponents(ActionListener listener) {
 
         moneyLabel = new JLabel();
         amountLabel = new JLabel();
@@ -35,7 +39,7 @@ public class AddActivity extends JDialog {
         depositsButton = new JToggleButton();
         expendituresButton = new JToggleButton();
         addActivityLabel = new JLabel();
-        calendar = new JTextField(30);
+        calendar = new JDateChooser();
 
         setLayout(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
@@ -50,6 +54,8 @@ public class AddActivity extends JDialog {
         add(addActivityLabel, gbc);
 
         depositsButton.setText("Ingresos");
+        depositsButton.setActionCommand("depositsAdd");
+        depositsButton.addActionListener(listener);
         gbc.gridx = 0;
         gbc.gridy = 1;
         gbc.gridwidth = 1;
@@ -57,6 +63,8 @@ public class AddActivity extends JDialog {
         add(depositsButton, gbc);
 
         expendituresButton.setText("Egresos");
+        expendituresButton.setActionCommand("expendituresAdd");
+        expendituresButton.addActionListener(listener);
         gbc.gridx = 1;
         gbc.gridy = 1;
         gbc.gridwidth = 1;
@@ -92,8 +100,6 @@ public class AddActivity extends JDialog {
         gbc.insets = new Insets(20, 0, 10, 5);
         add(categoryLabel, gbc);
 
-        categoriesComboBox.setModel(
-                new DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         categoriesComboBox.setFont(new Font("Segoe UI", 3, 18));
         gbc.gridx = 1;
         gbc.gridy = 3;
@@ -109,7 +115,6 @@ public class AddActivity extends JDialog {
         gbc.insets = new Insets(20, 0, 10, 5);
         add(dateLabel, gbc);
 
-        calendar.setColumns(10);
         calendar.setFont((new Font("Segoe UI", 3, 18)));
         gbc.gridx = 1;
         gbc.gridy = 4;
@@ -120,6 +125,8 @@ public class AddActivity extends JDialog {
         addButton.setBackground(new Color(252, 240, 122));
         addButton.setFont(new Font("Segoe UI", 3, 18));
         addButton.setText("Ingresar");
+        addButton.setActionCommand("addActivity");
+        addButton.addActionListener(listener);
         gbc.gridx = 0;
         gbc.gridy = 5;
         gbc.gridwidth = 2;
@@ -143,6 +150,11 @@ public class AddActivity extends JDialog {
         add(moneyLabel, gbc);
     }
 
+    public void setCategories(ArrayList<String> categories) {
+        DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>(categories.toArray(new String[0]));
+        categoriesComboBox.setModel(model);
+    }
+
     public JToggleButton getDepositsButton() {
         return depositsButton;
     }
@@ -159,7 +171,7 @@ public class AddActivity extends JDialog {
         return amountTextField;
     }
 
-    public JTextField getCalendar() {
+    public JDateChooser getCalendar() {
         return calendar;
     }
 }

@@ -1,5 +1,7 @@
 package model;
 
+import jdk.jfr.Category;
+
 import java.util.ArrayList;
 
 public class RegisterActivities {
@@ -9,6 +11,13 @@ public class RegisterActivities {
     public RegisterActivities() {
         activities = new ArrayList<>();
         categories = new ArrayList<>();
+    }
+
+    public void addActivity(Activity activity){
+        activities.add(activity);
+    }
+    public void addCategory(String category){
+        categories.add(category);
     }
 
     public int totalAmount(){
