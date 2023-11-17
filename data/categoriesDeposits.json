@@ -1,0 +1,11 @@
+{
+  "registerActivities": {
+    "categories": [
+      {
+        "category" : "Comida"
+      },{
+        "category": "Personal"
+      }
+    ]
+  }
+}

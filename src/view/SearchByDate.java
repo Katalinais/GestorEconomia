@@ -9,8 +9,8 @@ import javax.swing.table.DefaultTableModel;
 public class SearchByDate extends JDialog {
 
     private JButton searchButton;
-    private JButton deposits;
-    private JButton expenditures;
+    private JToggleButton depositsButton;
+    private JToggleButton expendituresButton;
     private JDateChooser dateChooser;
     private JLabel searchByCategoryLabel;
     private JLabel categoryLabel;
@@ -28,8 +28,8 @@ public class SearchByDate extends JDialog {
         searchButton = new JButton();
         jScrollPane1 = new JScrollPane();
         informationTable = new JTable();
-        deposits = new JButton();
-        expenditures = new JButton();
+        depositsButton = new JToggleButton();
+        expendituresButton = new JToggleButton();
         dateChooser = new JDateChooser();
 
         setLayout(new GridBagLayout());
@@ -37,29 +37,33 @@ public class SearchByDate extends JDialog {
 
         searchByCategoryLabel.setFont(new Font("Segoe UI", 1, 18));
         searchByCategoryLabel.setForeground(new Color(238, 164, 250));
-        searchByCategoryLabel.setText("Buscar por Categoria:");
+        searchByCategoryLabel.setText("Buscar por Fecha:");
         gbc.gridx = 0;
         gbc.gridy = 0;
         gbc.gridwidth = 3;
         gbc.insets.bottom = 20;
         add(searchByCategoryLabel, gbc);
 
-        deposits.setText("Ingresos");
+        depositsButton.setText("Ingresos");
         gbc.gridx = 0;
         gbc.gridy = 1;
         gbc.gridwidth = 1;
         gbc.insets.right = 5;
-        add(deposits, gbc);
+        add(depositsButton, gbc);
 
-        expenditures.setText("Egresos");
+        expendituresButton.setText("Egresos");
         gbc.gridx = 2;
         gbc.gridy = 1;
         gbc.gridwidth = 1;
         gbc.insets.left = 5;
-        add(expenditures, gbc);
+        add(expendituresButton, gbc);
+
+        ButtonGroup buttonGroup = new ButtonGroup();
+        buttonGroup.add(depositsButton);
+        buttonGroup.add(expendituresButton);
 
         categoryLabel.setFont(new Font("Segoe UI", 1, 14));
-        categoryLabel.setText("Categoria:");
+        categoryLabel.setText("Fecha:");
         gbc.gridx = 0;
         gbc.gridy = 2;
         gbc.gridwidth = 1;
@@ -99,5 +103,21 @@ public class SearchByDate extends JDialog {
         gbc.gridwidth = 3;
         gbc.insets = new Insets(10, 0, 0, 0);
         add(jScrollPane1, gbc);
+    }
+
+    public JToggleButton getDepositsButton() {
+        return depositsButton;
+    }
+
+    public JToggleButton getExpendituresButton() {
+        return expendituresButton;
+    }
+
+    public JDateChooser getDateChooser() {
+        return dateChooser;
+    }
+
+    public JTable getInformationTable() {
+        return informationTable;
     }
 }

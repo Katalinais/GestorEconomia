@@ -6,8 +6,8 @@ import javax.swing.*;
 public class AddCategory extends JDialog {
 
     private JButton addButton;
-    private JButton depositsButton;
-    private JButton expendituresButton;
+    private JToggleButton depositsButton;
+    private JToggleButton expendituresButton;
     private JLabel addCategoryLabel;
     private JLabel nameLabel;
     private JTextField nameTextField;
@@ -22,8 +22,8 @@ public class AddCategory extends JDialog {
         nameLabel = new JLabel();
         nameTextField = new JTextField();
         addButton = new JButton();
-        depositsButton = new JButton();
-        expendituresButton = new JButton();
+        depositsButton = new JToggleButton();
+        expendituresButton = new JToggleButton();
 
         setLayout(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
@@ -51,6 +51,10 @@ public class AddCategory extends JDialog {
         gbc.insets.left = 5;
         add(expendituresButton, gbc);
 
+        ButtonGroup buttonGroup = new ButtonGroup();
+        buttonGroup.add(depositsButton);
+        buttonGroup.add(expendituresButton);
+
         nameLabel.setFont(new Font("Segoe UI", 1, 14));
         nameLabel.setText("Nombre:");
         gbc.gridx = 0;
@@ -76,5 +80,16 @@ public class AddCategory extends JDialog {
         add(addButton, gbc);
     }
 
+    public JToggleButton getDepositsButton() {
+        return depositsButton;
+    }
+
+    public JToggleButton getExpendituresButton() {
+        return expendituresButton;
+    }
+
+    public JTextField getNameTextField() {
+        return nameTextField;
+    }
 }
 

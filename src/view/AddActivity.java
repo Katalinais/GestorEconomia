@@ -4,9 +4,9 @@ import java.awt.*;
 import javax.swing.*;
 
 public class AddActivity extends JDialog {
-    private JButton depositsButton;
+    private JToggleButton depositsButton;
     private JButton addButton;
-    private JButton expendituresButton;
+    private JToggleButton expendituresButton;
     private JComboBox<String> categoriesComboBox;
     private JLabel moneyLabel;
     private JLabel categoryLabel;
@@ -32,8 +32,8 @@ public class AddActivity extends JDialog {
         addButton = new JButton();
         totalBalance = new JLabel();
         moneyLabel = new JLabel();
-        depositsButton = new JButton();
-        expendituresButton = new JButton();
+        depositsButton = new JToggleButton();
+        expendituresButton = new JToggleButton();
         addActivityLabel = new JLabel();
         calendar = new JTextField(30);
 
@@ -62,6 +62,11 @@ public class AddActivity extends JDialog {
         gbc.gridwidth = 1;
         gbc.insets.left = 5;
         add(expendituresButton, gbc);
+
+        ButtonGroup buttonGroup = new ButtonGroup();
+        buttonGroup.add(depositsButton);
+        buttonGroup.add(expendituresButton);
+
 
         amountLabel.setFont(new Font("Segoe UI", 3, 18));
         amountLabel.setText("Cantidad ($):");
@@ -138,5 +143,24 @@ public class AddActivity extends JDialog {
         add(moneyLabel, gbc);
     }
 
+    public JToggleButton getDepositsButton() {
+        return depositsButton;
+    }
+
+    public JToggleButton getExpendituresButton() {
+        return expendituresButton;
+    }
+
+    public JComboBox<String> getCategoriesComboBox() {
+        return categoriesComboBox;
+    }
+
+    public JTextField getAmountTextField() {
+        return amountTextField;
+    }
+
+    public JTextField getCalendar() {
+        return calendar;
+    }
 }
 

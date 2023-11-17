@@ -16,9 +16,21 @@ public class Management {
     }
 
     public void initComponents(){
-        ArrayList<String> categories = Persistence.loadCategoriesXml("data/categoriesDeposits.xml");
-        deposits.setCategories(categories);
-        ArrayList<Activity> activities = Persistence.loadActivitiesXml("data/deposits.xml");
-        deposits.setActivities(activities);
+        ArrayList<String> categoriesDeposits = Persistence.readCategories("data/categoriesDeposits.json");
+        deposits.setCategories(categoriesDeposits);
+        ArrayList<Activity> activitiesDeposits = Persistence.readActivities("data/deposits.json");
+        deposits.setActivities(activitiesDeposits);ArrayList<String> categories = Persistence.readCategories("data/categoriesDeposits.json");
+        ArrayList<String> categoriesExpenditures = Persistence.readCategories("data/categoriesExpenditures.json");
+        expenditures.setCategories(categoriesExpenditures);
+        ArrayList<Activity> activitiesExpenditures = Persistence.readActivities("data/expenditures.json");
+        expenditures.setActivities(activitiesExpenditures);
+    }
+
+    public RegisterActivities getDeposits() {
+        return deposits;
+    }
+
+    public RegisterActivities getExpenditures() {
+        return expenditures;
     }
 }

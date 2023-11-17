@@ -7,8 +7,8 @@ import javax.swing.table.DefaultTableModel;
 public class SearchByCategory extends JDialog {
 
     private JButton searchButton;
-    private JButton deposits;
-    private JButton expenditures;
+    private JToggleButton depositsButton;
+    private JToggleButton expendituresButton;
     private JComboBox<String> categoryComboBox;
     private JLabel searchByCategoryLabel;
     private JLabel category;
@@ -26,8 +26,8 @@ public class SearchByCategory extends JDialog {
         searchButton = new JButton();
         jScrollPane1 = new JScrollPane();
         informationTable = new JTable();
-        deposits = new JButton();
-        expenditures = new JButton();
+        depositsButton = new JToggleButton();
+        expendituresButton = new JToggleButton();
         categoryComboBox = new JComboBox<>();
 
         setLayout(new GridBagLayout());
@@ -42,19 +42,23 @@ public class SearchByCategory extends JDialog {
         gbc.insets.bottom = 20;
         add(searchByCategoryLabel, gbc);
 
-        deposits.setText("Ingresos");
+        depositsButton.setText("Ingresos");
         gbc.gridx = 0;
         gbc.gridy = 1;
         gbc.gridwidth = 1;
         gbc.insets.right = 5;
-        add(deposits, gbc);
+        add(depositsButton, gbc);
 
-        expenditures.setText("Egresos");
+        expendituresButton.setText("Egresos");
         gbc.gridx = 2;
         gbc.gridy = 1;
         gbc.gridwidth = 1;
         gbc.insets.left = 5;
-        add(expenditures, gbc);
+        add(expendituresButton, gbc);
+
+        ButtonGroup buttonGroup = new ButtonGroup();
+        buttonGroup.add(depositsButton);
+        buttonGroup.add(expendituresButton);
 
         category.setFont(new Font("Segoe UI", 1, 14));
         category.setText("Categoria:");

@@ -1,0 +1,16 @@
+{
+  "registerActivities": {
+    "activities": [
+      {
+        "amount": 100,
+        "category": "Comida",
+        "date": "2023-09-26"
+      },
+      {
+        "amount": 500,
+        "category": "Transporte",
+        "date": "2023-11-10"
+      }
+    ]
+  }
+}

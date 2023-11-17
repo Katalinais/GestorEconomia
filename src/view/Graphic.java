@@ -6,8 +6,8 @@ import javax.swing.*;
 public class Graphic extends JDialog {
 
     private JLabel graphicLabel;
-    private JButton depositsButton;
-    private JButton expendituresButton;
+    private JToggleButton depositsButton;
+    private JToggleButton expendituresButton;
 
     public Graphic() {
         initComponents();
@@ -16,8 +16,8 @@ public class Graphic extends JDialog {
     private void initComponents() {
 
         graphicLabel = new JLabel();
-        depositsButton = new JButton();
-        expendituresButton = new JButton();
+        depositsButton = new JToggleButton();
+        expendituresButton = new JToggleButton();
 
         setLayout(new GridBagLayout());
 
@@ -47,6 +47,17 @@ public class Graphic extends JDialog {
         gbc.gridy = 1;
         gbc.insets = new Insets(10, 10, 0, 0);
         add(expendituresButton, gbc);
+
+        ButtonGroup buttonGroup = new ButtonGroup();
+        buttonGroup.add(depositsButton);
+        buttonGroup.add(expendituresButton);
     }
 
+    public JToggleButton getDepositsButton() {
+        return depositsButton;
+    }
+
+    public JToggleButton getExpendituresButton() {
+        return expendituresButton;
+    }
 }

@@ -1,5 +1,7 @@
 package persistence;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import model.Activity;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -13,10 +15,13 @@ import java.io.File;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 
 public class Persistence {
+    /*
     public static ArrayList<Activity> loadActivitiesXml(String fileName) {
         ArrayList<Activity> activities = new ArrayList<>();
 
@@ -47,6 +52,8 @@ public class Persistence {
         return activities;
     }
 
+     */
+
     public static ArrayList<String> loadCategoriesXml(String fileName) {
         ArrayList<String> categories = new ArrayList<>();
 
@@ -70,6 +77,47 @@ public class Persistence {
             e.printStackTrace();
         }
 
+        return categories;
+    }
+
+    public static ArrayList<Activity> readActivities(String fileName){
+        ArrayList<Activity> activities = new ArrayList<>();
+        try {
+            ObjectMapper objectMapper = new ObjectMapper();
+            JsonNode rootNode = objectMapper.readTree(new File(fileName));
+            JsonNode activitiesNode = rootNode.path("registerActivities").path("activities");
+
+            for (JsonNode activityNode : activitiesNode) {
+                int amount = Integer.parseInt(activityNode.get("amount").asText());
+                String category = activityNode.get("category").asText();
+                String dateStr = activityNode.get("date").asText();
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+                LocalDate date = LocalDate.parse(dateStr, formatter);
+                Activity activity = new Activity(amount, category, date);
+                activities.add(activity);
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return activities;
+    }
+
+    public static ArrayList<String> readCategories(String fileName){
+        ArrayList<String> categories = new ArrayList<>();
+        try {
+            ObjectMapper objectMapper = new ObjectMapper();
+            JsonNode rootNode = objectMapper.readTree(new File(fileName));
+            JsonNode activitiesNode = rootNode.path("registerActivities").path("categories");
+
+            for (JsonNode activityNode : activitiesNode) {
+                String category = activityNode.get("category").asText();
+                categories.add(category);
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         return categories;
     }
 }

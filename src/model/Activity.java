@@ -1,17 +1,18 @@
 package model;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 
 public class Activity {
     private int amount;
     private String category;
-    private Date date;
+    private LocalDate date;
 
-    public Activity(int amount, String category, Date date) {
-            this.amount = amount;
-            this.category = category;
-            this.date = date;
+    public Activity(int amount, String category, LocalDate date) {
+        this.amount = amount;
+        this.category = category;
+        this.date = date;
     }
 
     public int getAmount() {
